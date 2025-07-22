@@ -59,7 +59,7 @@ spec:
         serviceAccountName: kube-rbac-proxy
         containers:
         - name: ray-head
-          image: rayproject/ray:2.46.0
+          image: quay.io/modh/ray@sha256:6d076aeb38ab3c34a6a2ef0f58dc667089aa15826fa08a73273c629333e12f1e
           ports:
           - containerPort: 6379
             name: gcs
@@ -97,7 +97,7 @@ spec:
             successThreshold: 1
             timeoutSeconds: 2
         - name: kube-rbac-proxy
-          image: quay.io/brancz/kube-rbac-proxy:v0.18.1
+          image: registry.redhat.io/openshift4/ose-kube-rbac-proxy
           args:
           - "--insecure-listen-address=0.0.0.0:8265"
           - "--upstream=http://127.0.0.1:8443/"
@@ -120,7 +120,7 @@ spec:
       spec:
         containers:
         - name: ray-worker
-          image: rayproject/ray:2.46.0
+          image: quay.io/modh/ray@sha256:6d076aeb38ab3c34a6a2ef0f58dc667089aa15826fa08a73273c629333e12f1e
           resources:
             limits:
               cpu: 1
