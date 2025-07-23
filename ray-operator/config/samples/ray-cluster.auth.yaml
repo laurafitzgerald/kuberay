@@ -50,6 +50,7 @@ metadata:
   name: ray-cluster-with-auth
 spec:
   headGroupSpec:
+    enableIngress: true
     rayStartParams:
       dashboard-host: '127.0.0.1'
       dashboard-port: '8443'
@@ -69,11 +70,11 @@ spec:
             name: client
           resources:
             limits:
-              cpu: "2"
-              memory: "4Gi"
+              cpu: "500m"
+              memory: 2
             requests:
-              cpu: "2"
-              memory: "4Gi"
+              cpu: "500m"
+              memory: 2
           readinessProbe:
             exec:
               command:
@@ -111,7 +112,7 @@ spec:
           configMap:
             name: kube-rbac-proxy
   workerGroupSpecs:
-  - replicas: 2
+  - replicas: 1
     minReplicas: 1
     maxReplicas: 5
     groupName: worker-group
@@ -123,8 +124,8 @@ spec:
           image: quay.io/modh/ray@sha256:6d076aeb38ab3c34a6a2ef0f58dc667089aa15826fa08a73273c629333e12f1e
           resources:
             limits:
-              cpu: 1
-              memory: "4Gi"
+              cpu: "500m"
+              memory: 2
             requests:
-              cpu: 1
-              memory: "4Gi"
+              cpu: "500m"
+              memory: 2
