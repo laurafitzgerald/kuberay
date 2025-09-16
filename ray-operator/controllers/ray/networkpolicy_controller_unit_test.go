@@ -4,6 +4,7 @@ import (
 	"os"
 	"testing"
 
+	. "github.com/onsi/ginkgo/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	corev1 "k8s.io/api/core/v1"
@@ -13,7 +14,6 @@ import (
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	. "github.com/onsi/ginkgo/v2"
 	rayv1 "github.com/ray-project/kuberay/ray-operator/apis/ray/v1"
 	"github.com/ray-project/kuberay/ray-operator/controllers/ray/utils"
 )
@@ -25,7 +25,7 @@ var (
 	testRayClusterWithOtherOwner *rayv1.RayCluster
 )
 
-func setupNetworkPolicyTest(t *testing.T) {
+func setupNetworkPolicyTest(_ *testing.T) {
 	logf.SetLogger(zap.New(zap.WriteTo(GinkgoWriter), zap.UseDevMode(true)))
 
 	// Initialize NetworkPolicy controller
