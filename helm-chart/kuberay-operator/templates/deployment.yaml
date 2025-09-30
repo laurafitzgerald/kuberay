@@ -131,6 +131,9 @@ spec:
             {{- $argList = append $argList (printf "--burst=%v" .Values.kubeClient.burst) -}}
             {{- end -}}
             {{- end -}}
+            {{- if hasKey .Values "secureNetworkPolicy" -}}
+            {{- $argList = append $argList (printf "--secure-network-policy=%t" .Values.secureNetworkPolicy) -}}
+            {{- end -}}
             {{- (printf "\n") -}}
             {{- $argList | toYaml | indent 12 }}
           ports:

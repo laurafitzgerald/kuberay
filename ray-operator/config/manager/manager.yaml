@@ -30,6 +30,7 @@ spec:
         - /manager
         args:
         - --feature-gates=RayClusterStatusConditions=true # this argument can be removed for version >= v1.3 where the feature gate is enabled by default.
+        - --secure-network-policy=true
 #        - --enable-leader-election
         image: kuberay/operator
         imagePullPolicy: IfNotPresent

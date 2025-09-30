@@ -157,6 +157,9 @@ singleNamespaceInstall: false
 #   - n1
 #   - n2
 
+# -- Use secure network policy. When enabled on OpenShift, this will be automatically set to true.
+# secureNetworkPolicy: true
+
 # -- Environment variables.
 
 env:
